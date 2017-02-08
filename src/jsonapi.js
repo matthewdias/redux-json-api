@@ -111,7 +111,7 @@ export const createResource = (resource, {
       apiRequest(endpoint, {
         headers,
         method: 'POST',
-        credentials: 'include',
+        credentials: 'omit',
         body: JSON.stringify({
           data: resource
         })
@@ -151,7 +151,7 @@ export const readEndpoint = (endpoint, {
     return new Promise((resolve, reject) => {
       apiRequest(`${apiEndpoint}`, {
         headers,
-        credentials: 'include'
+        credentials: 'omit'
       })
         .then(json => {
           dispatch(apiRead({ endpoint, options, ...json }));
@@ -187,7 +187,7 @@ export const updateResource = (resource, {
       apiRequest(endpoint, {
         headers,
         method: 'PATCH',
-        credentials: 'include',
+        credentials: 'omit',
         body: JSON.stringify({
           data: resource
         })
@@ -225,7 +225,7 @@ export const deleteResource = (resource, {
       apiRequest(endpoint, {
         headers,
         method: 'DELETE',
-        credentials: 'include'
+        credentials: 'omit'
       }).then(() => {
         dispatch(apiDeleted(resource));
         onSuccess();
